@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kraftive Events& Media </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
+
+        :root {
+            --brand-primary: #4F46E5;
+            --brand-dark: #0F172A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover effects for Services */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+            background: white;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            border-color: var(--brand-primary);
+        }
+
+        /* Nav Glassmorphism */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Page Transitions */
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            background: #0F172A;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top-color: #6366f1;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive image fixes */
+        .hero-img {
+            filter: brightness(0.6);
+            object-position: center;
+        }
+        
+       /* BUTTONS */
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px; /* adds gap around buttons */
+    padding: 8px 16px;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(48, 54, 231, 0.04);
+    border: 1px solid rgba(14, 7, 99, 0.15);
+    display: flex;
+   
+    gap: 8px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+
+.btn i {
+    color: #3519e9;
+}
+
+.btn:hover {
+    background: rgba(9, 42, 230, 0.15);
+    box-shadow: 0 0 16px rgba(58, 13, 218, 0.45);
+}
+
+        
+    </style>
+</head>
+<body class="antialiased text-slate-900 overflow-x-hidden">
+
+    <!-- Loader -->
+    <div id="page-loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-500 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                    <img src="data:image/jpeg;base64,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" alt="KRAFTIVE EVENTS & MEDIA" class="h-10 w-10 object-cover rounded-full shadow-sm border border-slate-100 mr-3">
+                <span class="font-heading font-extrabold text-2xl tracking-tighter text-white transition-colors duration-300" id="logo-text">Kraftive Events & Media</span>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-10 text-xs font-bold tracking-widest">
+                <a href="#home" class="nav-link text-white/80 hover:text-white transition uppercase">Home</a>
+                <a href="#about" class="nav-link text-white/80 hover:text-white transition uppercase">About Us</a>
+                <a href="#services" class="nav-link text-white/80 hover:text-white transition uppercase">What We Do</a>
+                <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-full hover:bg-indigo-700 shadow-xl transition-all transform hover:-translate-y-0.5 active:scale-95">GET A QUOTE</a>
+            </div>
+
+            <button class="lg:hidden text-white" id="mobile-toggle">
+                <i class="fas fa-bars-staggered text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden bg-slate-950">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-slate-950 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070" alt="Hero Background" class="w-full h-full object-cover hero-img">
+        </div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-6 pt-20">
+            <div class="max-w-4xl">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-[10px] font-bold tracking-[0.2em] uppercase mb-8">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                    </span>
+                    Premier Event Agency
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold text-white leading-[1.1] mb-8 reveal" style="transition-delay: 100ms;">
+                    Creating Experiences <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">That Connect, Engage & Deliver.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-300 mb-12 max-w-2xl leading-relaxed reveal" style="transition-delay: 200ms;">
+                    From corporate events to BTL activations and curated celebrations, we bring your brand and moments to life with creativity and precision.
+                </p>
+                
+                <div class="flex flex-wrap gap-5 reveal" style="transition-delay: 300ms;">
+                    <a href="#contact" class="px-10 py-5 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 shadow-2xl shadow-indigo-600/30 transition-all flex items-center gap-3 group">
+                        Get a Quote 
+                        <i class="fas fa-chevron-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#services" class="px-10 py-5 bg-white/5 border border-white/10 text-white rounded-2xl font-bold hover:bg-white/10 backdrop-blur-md transition-all">
+                        View Our Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ABOUT US -->
+    <section id="about" class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-indigo-50 rounded-full blur-3xl opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=1973" alt="About Team" class="rounded-[2rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000">
+                        <div class="absolute -bottom-10 -right-10 bg-slate-900 p-10 rounded-[2rem] shadow-2xl z-20 hidden md:block border-4 border-white">
+                            <span class="block text-4xl font-heading font-bold text-white">100%</span>
+                            <span class="text-indigo-400 text-xs font-bold tracking-widest uppercase">Execution Rate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-1 bg-indigo-600 mb-8"></div>
+                   
+                    <h4 class="text-indigo-600 font-bold text-xs uppercase tracking-[0.3em] mb-4">Quick Intro</h4>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-8 leading-tight">Who We Are</h2>
+                    
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        <strong class="text-slate-900 font-bold">Kraftive Events & Media</strong> is a full-service event and activation agency specializing in experiential marketing, corporate events, and on-ground brand promotions.
+                    </p>
+                    
+                    <p class="text-slate-500 text-lg leading-relaxed mb-10">
+                        We blend creativity with execution excellence to deliver impactful experiences that drive engagement and results. Our process starts with your objective and ends with a legacy of connection.
+                    </p>
+
+                    <div class="flex items-center gap-6">
+                        <div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-100">
+                            <i class="fas fa-lightbulb text-indigo-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-900">Creative Strategy</h5>
+                            <p class="text-sm text-slate-500">Unconventional ideas that stick.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. WHAT WE DO (CORE SERVICES) -->
+    <section id="services" class="py-32 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-24 reveal">
+                <h4 class="text-indigo-600 font-bold text-xs uppercase tracking-[0.3em] mb-4">Our Expertise</h4>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-6">What We Do</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 1. Corporate Events -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 0ms;">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-indigo-200">
+                        <i class="fas fa-building-user text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Corporate Events</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Professional and seamless execution of conferences, launches, and corporate gatherings.</p>
+                    
+                    <div class="btns">
+                        <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                        <a href="http://127.0.0.1:3000/CORPORATE EVENT SERVICES photo /index.html?serverWindowId=a8ddec99-7e9f-4e5a-a65c-0ded63d167af" class="btn"><i class="fas fa-More details"></i> More details</a>
+                      </div>
+                    </div>
+                    
+
+                <!-- 2. Venue Sourcing -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-map-location-dot text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Venue Sourcing & Management</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Finding and managing the perfect venue tailored to your needs and scale.</p>
+               
+                <div class="btns">
+                    <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                    <a href="#" class="btn"><i class="fas fa-More details"></i> More details</a>
+                  </div>
+                </div>
+
+                <!-- 3. BTL Activation -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-indigo-200">
+                        <i class="fas fa-bullhorn text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">BTL Activation</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">High-impact on-ground activations that drive real consumer engagement.</p>
+              
+                <div class="btns">
+                    <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                    <a href="#" class="btn"><i class="fas fa-More details"></i> More details</a>
+                  </div>
+                </div>
+
+                <!-- 4. Stall Fabrication -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-pencil-ruler text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Exhibitions & Stall Fabrication</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Creative and functional stall designs that stand out in any exhibition hall.</p>
+              
+                <div class="btns">
+                    <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                    <a href="#" class="btn"><i class="fas fa-More details"></i> More details</a>
+                  </div>
+                </div>
+
+                <!-- 5. Festive Decor -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 0ms;">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-indigo-200">
+                        <i class="fas fa-masks-theater text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Festive & Thematic Decor</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Vibrant décor solutions for festivals and brand experiences.</p>
+                
+                <div class="btns">
+                    <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                    <a href="#" class="btn"><i class="fas fa-More details"></i> More details</a>
+                  </div>
+                </div>
+
+                <!-- 6. Corporate Engagement -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-users-rays text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Corporate Engagement</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Interactive in-store and on-ground engagement concepts that build community.</p>
+                
+                <div class="btns">
+                    <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                    <a href="#" class="btn"><i class="fas fa-More details"></i> More details</a>
+                  </div>
+                </div>
+
+                <!-- 7. Special Occasions -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-indigo-200">
+                        <i class="fas fa-cake-candles text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Birthday & Occasion Organisers</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Curated celebrations with personalized themes and immersive experiences.</p>
+                
+                <div class="btns">
+                    <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                    <a href="#" class="btn"><i class="fas fa-More details"></i> More details</a>
+                  </div>
+                </div>
+
+                <!-- 8. Custom Gifting -->
+                <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-gift text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Customised Gifting</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Bespoke and thoughtful gifting solutions that reflect your brand identity.</p>
+               
+                <div class="btns">
+                    <a href="#contact" class="btn"><i class="book"></i> Book</a>
+                    <a href="#" class="btn"><i class="fas fa-More details"></i> More details</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-32 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-950 rounded-[3rem] p-8 md:p-16 lg:p-24 relative overflow-hidden reveal">
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-indigo-600/10 blur-[120px]"></div>
+                
+                <div class="grid lg:grid-cols-2 gap-20 relative z-10">
+                    <div>
+                        <h2 class="text-4xl md:text-6xl font-heading font-bold text-white mb-8">Ready to Build <br>Something Great?</h2>
+                        <p class="text-slate-400 text-lg mb-12">Contact our specialists today to discuss your next big event or brand activation.</p>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                                    <i class="fas fa-phone-volume"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-slate-500 text-xs uppercase font-bold tracking-widest mb-1">Call Us</span>
+                                    <span class="text-xl font-bold text-white tracking-tight">+91 9082097808</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                                    <i class="fas fa-envelope-open-text"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-slate-500 text-xs uppercase font-bold tracking-widest mb-1">Email Us</span>
+                                    <span class="text-xl font-bold text-white tracking-tight"> info@kraftiveevents.com Ashoutosh@kraftiveevents.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
+                        <form id="quote-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">Full Name</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full px-5 py-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-600 outline-none transition">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">Email Address</label>
+                                    <input type="email" required placeholder="john@example.com" class="w-full px-5 py-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-600 outline-none transition">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">Inquiry Type</label>
+                                <select class="w-full px-5 py-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-600 outline-none transition">
+                                    <option>Corporate Event</option>
+                                    <option>BTL Activation</option>
+                                    <option>Exhibition/Stall</option>
+                                    <option>Customised Gifting</option>
+                                    <option>Venue Sourcing & Management</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">Your Brief</label>
+                                <textarea rows="4" placeholder="How can we help?" class="w-full px-5 py-4 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-600 outline-none transition"></textarea>
+                            </div>
+                            <button class="w-full py-5 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition-all active:scale-[0.98] flex items-center justify-center gap-3">
+                                SEND MESSAGE <i class="fas fa-paper-plane text-xs opacity-70"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 pt-24 pb-12 text-slate-400">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-8">
+                    <img src="data:image/jpeg;base64,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" alt="KRAFTIVE EVENTS & MEDIA" class="h-10 w-10 object-cover rounded-full shadow-sm border border-slate-100 mr-3">
+                        <span class="font-heading font-extrabold text-2xl text-white tracking-tighter">KRAFTIVE EVENTS & MEDIA</span>
+                    </div>
+                    <p class="text-lg max-w-sm mb-8">Excellence in experiential marketing and event management. We bring your brand to the people.</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/kraftive_events?igsh=cTFoYWlzcXZ1NTN4&utm_source=qr" class="w-12 h-12 rounded-xl border border-slate-800 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/kraftive-events-media/" class="w-12 h-12 rounded-xl border border-slate-800 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 hover:text-white transition-all"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-12 h-12 rounded-xl border border-slate-800 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="Http://wa.me/9082097808" class="w-12 h-12 rounded-xl border border-slate-800 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 hover:text-white transition-all"><i class="fab fa-whatsapp text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-widest mb-8">Explore</h5>
+                    <ul class="space-y-4 font-medium">
+                        <li><a href="#home" class="hover:text-indigo-400 transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-indigo-400 transition">About Us</a></li>
+                        <li><a href="#services" class="hover:text-indigo-400 transition">Our Services</a></li>
+                        <li><a href="#contact" class="hover:text-indigo-400 transition">Get a Quote</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-widest mb-8">Contact</h5>
+                    <p class="mb-4">Shop no. 12,Kraftive events & media
+                         
+                         <br> Navjeevan mandal, Lal Bahadur Shastri Marg, Surya Nagar, Vikhroli West Mumbai, Maharashtra 400083</p>
+                    <p>+91 9082097808</p>
+                    <p class="text-indigo-400">info@kraftiveevents.com
+                    </p>
+                    <p class="text-indigo-400"> Ashoutosh@kraftiveevents.com
+                    </p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-xs">© 2026 Kraftive Events & Media. All rights reserved.</p>
+                <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-slate-950 z-[100] flex flex-col justify-center items-center p-10 transform translate-x-full transition-transform duration-500 ease-in-out">
+        <button class="absolute top-10 right-10 text-white text-3xl" id="mobile-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="flex flex-col gap-10 text-center">
+            <a href="#home" class="m-link text-4xl font-heading font-bold text-white">HOME</a>
+            <a href="#about" class="m-link text-4xl font-heading font-bold text-white">ABOUT</a>
+            <a href="#services" class="m-link text-4xl font-heading font-bold text-white">SERVICES</a>
+            <a href="#contact" class="m-link text-4xl font-heading font-bold text-indigo-400">CONTACT</a>
+        </div>
+    </div>
+
+    <script>
+        // Removal of page loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('page-loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 600);
+        });
+
+        // Dynamic Nav Interaction
+        const nav = document.getElementById('main-nav');
+        const logo = document.getElementById('logo-text');
+        const links = document.querySelectorAll('.nav-link');
+        const mToggle = document.getElementById('mobile-toggle');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav', 'py-4');
+                nav.classList.remove('py-6');
+                logo.classList.replace('text-white', 'text-indigo-600');
+                links.forEach(l => l.classList.replace('text-white/80', 'text-slate-600'));
+                mToggle.classList.replace('text-white', 'text-slate-900');
+            } else {
+                nav.classList.remove('glass-nav', 'py-4');
+                nav.classList.add('py-6');
+                logo.classList.replace('text-indigo-600', 'text-white');
+                links.forEach(l => l.classList.replace('text-slate-600', 'text-white/80'));
+                mToggle.classList.replace('text-slate-900', 'text-white');
+            }
+        });
+
+        // Scroll Reveal logic
+        const scrollReveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const revealPoint = 120;
+                if (elementTop < window.innerHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', scrollReveal);
+        window.addEventListener('load', scrollReveal);
+
+        // Mobile Menu interactions
+        const mMenu = document.getElementById('mobile-menu');
+        const mClose = document.getElementById('mobile-close');
+        const mLinks = document.querySelectorAll('.m-link');
+
+        mToggle.addEventListener('click', () => mMenu.classList.remove('translate-x-full'));
+        mClose.addEventListener('click', () => mMenu.classList.add('translate-x-full'));
+        mLinks.forEach(l => l.addEventListener('click', () => mMenu.classList.add('translate-x-full')));
+
+        // Form UX
+        document.getElementById('quote-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-circle-notch animate-spin"></i> Processing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> REQUEST SENT';
+                btn.classList.replace('bg-indigo-600', 'bg-emerald-500');
+                this.reset();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
