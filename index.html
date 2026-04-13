@@ -187,13 +187,13 @@
         /* Service icons */
         .service-icon-gold {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary)) !important;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.25) !important;
+            box-shadow: 0 8px 25px rgba(255, 38, 0, 0.635) !important;
             color: var(--black-primary) !important;
         }
 
         .service-icon-dark {
             background: var(--white-muted) !important;
-            border: 1px solid rgba(255, 215, 0, 0.15) !important;
+            border: 1px solid rgba(213, 54, 1, 0.852) !important;
             color: var(--gold-primary) !important;
         }
 
@@ -213,14 +213,14 @@
         .experience-card {
             background: var(--black-card);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 1.5rem;
+            border-radius: 1.4rem;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .experience-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.08);
+            border-color: rgba(247, 211, 6, 0.824);
+            box-shadow: 0 20px 50px rgba(215, 103, 5, 0.566), 0 0 30px rgba(212, 216, 3, 0.766);
         }
 
         .card-image-container {
@@ -232,7 +232,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s ease;
+            transition: transform 0.8s ease;
         }
         .experience-card:hover .card-image-container img {
             transform: scale(1.08);
@@ -376,7 +376,7 @@
 
     <!-- Loader -->
     <div id="page-loader">
-        <div class="spinner"></div>
+        <div class="3dspinner"></div>
     </div>
 
     <!-- Navigation -->
@@ -391,7 +391,7 @@
                 <a href="#home" class="nav-link text-white/70 hover:text-yellow-400 transition uppercase">Home</a>
                 <a href="#about" class="nav-link text-white/70 hover:text-yellow-400 transition uppercase">About Us</a>
                 <a href="#services" class="nav-link text-white/70 hover:text-yellow-400 transition uppercase">What We Do</a>
-                <a href="#contact" class="px-8 py-3 rounded-full font-bold transition-all transform hover:-translate-y-0.5 active:scale-95 text-black" style="background: linear-gradient(135deg, #FFD700, #F5B800); box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);">GET A QUOTE</a>
+                <a href="#contact" class="px-8 py-3 rounded-full font-bold transition-all transform hover:-translate-y-0.5 active:scale-95 text-black" style="background: linear-gradient(135deg, #FFD700, #F5B800); box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);">Enquire</a>
             </div>
 
             <button class="lg:hidden text-white" id="mobile-toggle">
@@ -429,8 +429,9 @@
                 </div>
 
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold text-white leading-[1.1] mb-8 reveal" style="transition-delay: 100ms;">
-                    Creating Experiences <br>
-                    <span class="gold-gradient">That Connect, Engage & Deliver.</span>
+                    Discover Venues <br>
+                    <span class="gold-gradient">Execute Events &
+                        All in One Place</span>
                 </h1>
 
                 <p class="text-lg md:text-xl mb-12 max-w-2xl leading-relaxed reveal" style="color: rgba(255,255,255,0.55); transition-delay: 200ms;">
@@ -439,7 +440,7 @@
 
                 <div class="flex flex-wrap gap-5 reveal" style="transition-delay: 300ms;">
                     <a href="#contact" class="px-10 py-5 rounded-2xl font-bold transition-all flex items-center gap-3 group text-black" style="background: linear-gradient(135deg, #FFD700, #F5B800); box-shadow: 0 10px 40px rgba(255, 215, 0, 0.25);">
-                        Get a Quote
+                        Enquire
                         <i class="fas fa-chevron-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
                     </a>
                     <a href="#services" class="px-10 py-5 rounded-2xl font-bold transition-all" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255, 215, 0, 0.15); color: #FFD700; backdrop-filter: blur(10px);">
@@ -455,7 +456,7 @@
 
     <!-- 2. ABOUT US -->
     <section id="about" class="py-32 relative overflow-hidden" style="background: #f3f1f1;">
-        <div class="absolute inset-0 pattern-dots opacity-50"></div>
+        
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal">
@@ -464,7 +465,7 @@
                         <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=1973" alt="About Team" class="rounded-[2rem] shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-1000" style="border: 1px solid rgba(255,215,0,0.1);">
                         <div class="absolute -bottom-10 -right-10 p-10 rounded-[2rem] shadow-2xl z-20 hidden md:block" style="background: #111; border: 1px solid rgba(255,215,0,0.2);">
                             <span class="block text-4xl font-heading font-bold gold-gradient">100%</span>
-                            <span class="text-xs font-bold tracking-widest uppercase" style="color: #FFD700;">Execution Rate</span>
+                            <span class="text-xs font-bold tracking-widest uppercase" style="color: #FFD700;">Execution Assurance</span>
                         </div>
                     </div>
                 </div>
@@ -472,14 +473,24 @@
                 <div class="reveal" style="transition-delay: 200ms;">
                     <div class="about-accent-bar w-12 h-1 mb-8"></div>
                     <h4 class="font-bold text-xs uppercase tracking-[0.3em] mb-4" style="color: #FFD700;">Quick Intro</h4>
-                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-black mb-8 leading-tight">Who We Are</h2>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-black mb-8 leading-tight">Your Venue & Event Partner</h2>
 
                     <p class="text-lg leading-relaxed mb-6" style="color: rgba(21, 6, 6, 0.882);">
-                        <strong class="font-bold" style="color: #FFD700;">Kraftive Events & Media</strong> is a full-service event and activation agency specializing in experiential marketing, corporate events, and on-ground brand promotions.
+                        <strong class="font-bold" style="color: #FFD700;">At Kraftive Events & Media,</strong> we specialize in delivering seamless corporate events backed by the right venues and strong on-ground execution.
+
                     </p>
 
                     <p class="text-lg leading-relaxed mb-10" style="color: rgba(13, 9, 9, 0.873);">
-                        We blend creativity with execution excellence to deliver impactful experiences that drive engagement and results. Our process starts with your objective and ends with a legacy of connection.
+                        From sourcing premium venues to managing complete event execution, we ensure a smooth and hassle-free experience for every client.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-10" style="color: rgba(13, 9, 9, 0.873);">
+                        Corporate Events | Venue Solutions | Mall Activations | Brand Promotions
+                        
+                        <br>•⁠ ⁠Access to premium venues across key locations</br>
+                       <br>•⁠ ⁠End-to-end event execution & management </br>
+                        <br>•⁠ ⁠Transparent pricing, no hidden costs</br>
+        
+                    <br>• Let’s plan your next corporate event with the right venue.</br> 
                     </p>
                         
                     </div>
@@ -494,8 +505,8 @@
     <section id="about" class="py-32 relative overflow-hidden" style="background: #f3f1f1;">
         <div class="absolute inset-0 pattern-dots opacity-0"></div>
         <div class="text-center max-w-3xl mx-auto mb-24 reveal">
-            <h4 class="font-bold text-xs uppercase tracking-[0.3em] mb-4" style="color: #bca107;">Our Expertise</h4>
-            <h2 class="text-4xl md:text-5xl font-heading font-bold text-black mb-6">What We Do</h2>
+            <h4 class="font-bold text-xs uppercase tracking-[0.3em] mb-4" style="color: #bca107;">What We Do</h4>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-black mb-6">Our Expertise</h2>
             <div class="about-accent-bar w-20 h-1 mx-auto"></div>
         </div>
 
@@ -553,12 +564,12 @@
                 </div>
             </div>
 
-            <!-- 5. Festive Decor -->
+            <!-- 5.Decor Solutions  -->
             <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 0ms;">
                 <div class="relative z-10 w-35 h-37 mx-auto sm:mx-0 rounded-3xl overflow-hidden shadow-inner transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                     <img src="https://5.imimg.com/data5/SELLER/Default/2023/3/293389891/EQ/WO/BJ/184554945/mall-decoration-service.jpeg" class="w-full h-full object-cover">
                 </div>
-                <h3 class="text-bold font-bold text-2xl text-black mb-4">Festive & Thematic Decor</h3>
+                <h3 class="text-bold font-bold text-2xl text-black mb-4">Decor Solutions </h3>
                 <p class="text-sm leading-relaxed mb-6" style="color: rgb(11, 11, 0);">Vibrant décor solutions for festivals and brand experiences.</p>
                 <div class="buttons">
                     <a href="#contact" class="btn"><i class="fas fa-book"></i> Enquire</a>
@@ -566,33 +577,19 @@
                 </div>
             </div>
 
-            <!-- 6. Corporate Engagement -->
+            <!-- 6. Engagement Activities  -->
             <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 100ms;">
                 <div class="relative z-10 w-35 h-37 mx-auto sm:mx-0 rounded-3xl overflow-hidden shadow-inner  transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                     <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2070&auto=format&fit=crop" alt="Corporate Engagement" class="w-full h-full object-cover">
                 </div>
-                <h3 class="text-bold font-bold text-2xl text-black mb-4">Corporate Engagement</h3>
+                <h3 class="text-bold font-bold text-2xl text-black mb-4"> Engagement Activities </h3>
                 <p class="text-sm leading-relaxed mb-6" style="color: rgba(10, 9, 0, 0.986);">Interactive in-store and on-ground engagement concepts that build community.</p>
                 <div class="buttons">
                     <a href="#contact" class="btn"><i class="fas fa-book"></i> Enquire</a>
                     <a href="corpoate/corpoate.html" class="btn"><i class="fas fa-arrow-right"></i> Details</a>
                 </div>
             </div>
-
-            <!-- 7. Special Occasions -->
-            <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 200ms;">
-                <div class="relative z-10 w-35 h-37 mx-auto sm:mx-0 rounded-3xl overflow-hidden shadow-inner  transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                    <img src="https://img.freepik.com/premium-photo/birthday-party-planning-concept_1320336-29565.jpg?semt=ais_hybrid&w=740&q=80" alt="Birthday Events" class="w-full h-full object-cover">
-                </div>
-                <h3 class="text-bold font-bold text-2xl text-black mb-4">Birthday & Occasion Organisers</h3>
-                <p class="text-sm leading-relaxed mb-6" style="color: rgb(11, 10, 1);">Curated celebrations with personalized themes and immersive experiences.</p>
-                <div class="buttons">
-                    <a href="#contact" class="btn"><i class="fas fa-book"></i> Enquire</a>
-                    <a href="special/occasions.html" class="btn"><i class="fas fa-arrow-right"></i> Details</a>
-                </div>
-            </div>
-
-            <!-- 8. Custom Gifting (Already had image) -->
+            <!-- 7. Customised Gifting (Already had image) -->
             <div class="service-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 300ms;">
                 <div class="relative z-10 w-35 h-37 mx-auto sm:mx-0 rounded-3xl overflow-hidden shadow-inner  transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                     <img src="https://giftana.com/cdn/shop/collections/personalized-gifts.webp?v=1748507076" alt="Custom Gifting" class="w-full h-full object-cover">
