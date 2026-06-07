@@ -679,14 +679,9 @@ window.addEventListener('scroll',()=>{
   nav.classList.toggle('scrolled',window.scrollY>60);
 },{passive:true});
 
-// Hero slider
+// Hero slider (manual only)
 const heroSlides=document.querySelectorAll('.hero-slide');
 let hIdx=0;
-setInterval(()=>{
-  heroSlides[hIdx].classList.remove('active');
-  hIdx=(hIdx+1)%heroSlides.length;
-  heroSlides[hIdx].classList.add('active');
-},5000);
 
 // Mobile menu
 const ham=document.getElementById('hamburger');
@@ -729,10 +724,7 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   document.getElementById('srvNext').addEventListener('click',()=>goTo(cur+1));
   document.getElementById('srvPrev').addEventListener('click',()=>goTo(cur-1));
   thumbs.forEach(t=>t.addEventListener('click',()=>goTo(parseInt(t.dataset.i))));
-  let timer=setInterval(()=>goTo(cur+1),5500);
   const sec=document.getElementById('services');
-  sec.addEventListener('mouseenter',()=>clearInterval(timer));
-  sec.addEventListener('mouseleave',()=>{clearInterval(timer);timer=setInterval(()=>goTo(cur+1),5500);});
   // Touch/swipe
   let tx=0;
   sec.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
