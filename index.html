@@ -401,7 +401,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.5s ease-out;
+            transition: all 0.4s ease-out;
         }
         .reveal.active {
             opacity: 1;
@@ -416,124 +416,162 @@
 
         
        /* ==================== SERVICES SLIDER ==================== */
-#services {
-  position: relative;
-  height: 100vh; min-height: 600px;
-  overflow: hidden;
-}
-.srv-list { position: absolute; inset: 0; }
-.srv-item {
-  position: absolute; inset: 0;
-  opacity: 0; z-index: 0;
-  transition: opacity 0s;
-}
-.srv-item.active { opacity: 1; z-index: 1; }
-.srv-item img {
-  width: 100%; height: 100%; object-fit: cover;
-  transform: scale(1.05);
-  transition: transform 8s ease;
-}
-.srv-item.active img { transform: scale(1); }
-.srv-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.88) 45%, rgba(0,0,0,0.25) 100%);
-}
-.srv-content {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 100%; max-width: 1280px; padding: 0 24px;
-  padding-top: 60px;
-}
-.srv-eyebrow {
-  font-size: 10px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
-}
-.srv-title {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: 700; color: var(--white);
-  line-height: 1.1; margin-bottom: 20px;
-  opacity: 0; transform: translateY(30px);
-  transition: all 0.6s ease 0.1s;
-}
-.srv-item.active .srv-title { opacity: 1; transform: translateY(0); }
-.srv-points {
-  list-style: none; margin-bottom: 32px;
-  opacity: 0; transform: translateY(20px);
-  transition: all 0.6s ease 0.25s;
-}
-.srv-item.active .srv-points { opacity: 1; transform: translateY(0); }
-.srv-points li {
-  font-size: clamp(14px, 1.8vw, 18px); color: rgba(255,255,255,0.8);
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 10px; font-weight: 300;
-}
-.srv-points li::before {
-  content: ''; width: 20px; height: 1px;
-  background: var(--gold); flex-shrink: 0;
-}
-.srv-btns {
-  display: flex; flex-wrap: wrap; gap: 14px;
-  opacity: 0; transform: translateY(20px);
-  transition: all 0.6s ease 0.4s;
-}
-.srv-item.active .srv-btns { opacity: 1; transform: translateY(0); }
+ #services {
+      position:relative; height:100vh; min-height:600px;
+      overflow:hidden; background:0, 0, 0, 0.37;
+    }
 
-/* Thumbnails */
-.srv-thumbs {
-  position: absolute; bottom: 36px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; gap: 12px; z-index: 10;
-  max-width: calc(100vw - 48px);
-  overflow-x: auto; padding-bottom: 4px;
-  scroll-snap-type: x mandatory;
-}
-.srv-thumbs::-webkit-scrollbar { display: none; }
-.srv-thumb {
-  width: 100px; height: 140px; flex-shrink: 0;
-  scroll-snap-align: start;
-  border-radius: 14px; overflow: hidden;
-  cursor: pointer; position: relative;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-  opacity: 0.55;
-}
-.srv-thumb.active {
-  border-color: var(--gold); opacity: 1;
-  box-shadow: 0 8px 24px rgba(212,175,55,0.4);
-}
-.srv-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.srv-thumb-label {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
-  color: var(--white); font-size: 9px; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  padding: 16px 6px 6px; text-align: center;
-}
+    /* Main slides */
+    .slide-item {
+      position:absolute; inset:0;
+      opacity:0; z-index:0;
+      transition:opacity .8s ease;
+    }
+    .slide-item.active { opacity:1; z-index:1; }
+    .slide-item > img {
+      width:100%; height:100%; object-fit:cover;
+      transform:scale(1.05); transition:transform 8s ease;
+    }
+    .slide-item.active > img { transform:scale(1); }
+    .slide-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to right,rgba(0, 0, 0, 0.37) 45%,rgba(0, 0, 0, 0.37));
+    }
 
-/* Nav Arrows */
-.srv-arrows {
-  position: absolute; bottom: 36px; right: 24px; z-index: 20;
-  display: flex; gap: 10px;
-}
-.srv-arrow {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: rgba(255,255,255,0.08); backdrop-filter: blur(8px);
-  border: 1px solid rgba(212,175,55,0.3);
-  color: var(--white); font-size: 14px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: all 0.3s ease;
-}
-.srv-arrow:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    /* Slide content */
+    .slide-content {
+      position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      width:100%; max-width:1280px;
+      padding:60px 24px 0;
+      pointer-events:none;
+    }
+    .slide-title {
+      font-family:'Outfit',sans-serif;
+      font-size:clamp(32px,6vw,68px);
+      font-weight:700; color:#f5d001;
+      line-height:1.1; margin-bottom:20px;
+      opacity:0; transform:translateY(28px);
+      transition:all .6s ease .1s;
+    }
+    .slide-item.active .slide-title { opacity:1; transform:translateY(0); }
+    .slide-points {
+      list-style:none; margin-bottom:32px;
+      opacity:0; transform:translateY(20px);
+      transition:all .6s ease .25s;
+    }
+    .slide-item.active .slide-points { opacity:1; transform:translateY(0); }
+    .slide-points li {
+      font-size:clamp(13px,1.6vw,17px); color:rgba(255,255,255,.8);
+      display:flex; align-items:center; gap:10px;
+      margin-bottom:10px; font-weight:300;
+    }
+    .slide-points li::before {
+      content:''; width:20px; height:1px;
+      background:var(--gold); flex-shrink:0;
+    }
+    .slide-btns {
+      display:flex; flex-wrap:wrap; gap:14px;
+      opacity:0; transform:translateY(20px);
+      transition:all .6s ease .4s;
+      pointer-events:auto;
+    }
+    .slide-item.active .slide-btns { opacity:1; transform:translateY(0); }
+    .s-btn {
+      padding:12px 24px; border-radius:4px;
+      font-size:14px; font-weight:700;
+      text-transform:uppercase; letter-spacing:1px;
+      transition:all .3s; cursor:pointer; text-decoration:none; display:inline-block;
+    }
+    .s-btn-primary { background:var(--gold); color:#f5d001; border:1px solid var(--gold); }
+    .s-btn-primary:hover { background:#f5d001; color:var(--gold); box-shadow:0 0 15px rgba(255, 217, 0, 0.518); }
+    .s-btn-secondary { border:1px solid #f5d001; color:#f5d001; background:transparent; }
+    .s-btn-secondary:hover { background:#f5d001; color:#000; }
 
-/* Progress bar */
-.srv-progress {
-  position: absolute; bottom: 0; left: 0; height: 2px;
-  background: var(--gold); z-index: 20;
-  transition: width 0.1s linear;
-}
+    /* Thumbnails */
+    .slide-thumbs {
+      position:absolute; bottom:30px; left:50%;
+      transform:translateX(-50%);
+      display:flex; gap:10px; z-index:20;
+      max-width:calc(100vw - 48px);
+      overflow-x:auto; padding-bottom:4px;
+      scroll-snap-type:x mandatory;
+    }
+    .slide-thumbs::-webkit-scrollbar { display:none; }
+    .slide-thumb {
+      width:80px; height:110px; flex-shrink:0;
+      scroll-snap-align:start; border-radius:12px;
+      overflow:hidden; cursor:pointer; position:relative;
+      border:2px solid transparent;
+      transition:all .3s; opacity:.5;
+    }
+    .slide-thumb.active {
+      border-color:var(--gold); opacity:1;
+      box-shadow:0 6px 20px rgba(212,175,55,.4);
+    }
+    .slide-thumb img { width:100%; height:100%; object-fit:cover; }
+    .slide-thumb-label {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(transparent,rgba(0,0,0,.8));
+      color:#fff; font-size:8px; font-weight:600;
+      letter-spacing:1px; text-transform:uppercase;
+      padding:12px 4px 5px; text-align:center;
+    }
 
-        
+    /* Arrows */
+    .slide-arrows {
+      position:absolute; bottom:36px; right:30px;
+      z-index:30; display:flex; gap:12px;
+    }
+    .slide-arrow {
+      width:46px; height:46px; border-radius:50%;
+      background:rgba(51, 47, 17, 0.451);
+      backdrop-filter:blur(5px);
+      border:1px solid rgba(255,215,0,.3);
+      color:#f5f4eb; font-size:17px;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all .3s;
+    }
+    .slide-arrow:hover { background:var(--gold); color:#000; transform:scale(1.08); }
+
+    /* Mobile: hide thumbs on very small, show arrows center-bottom */
+    @media(max-width:640px) {
+      .slide-thumbs { display:none; }
+      .slide-arrows { right:50%; transform:translateX(50%); bottom:20px; }
+      .slide-content { padding:80px 16px 0; }
+    }
+        /* ── ABOUT ── */
+    #about {
+      background:#fff;
+      position:relative; overflow:hidden;
+    }
+    .glass-assurance-card {
+      background:rgba(26,26,26,.92);
+      backdrop-filter:blur(20px);
+      border:1px solid rgba(255,215,0,.25);
+      color:#fff;
+    }
+    .glass-pill-bar {
+      background:rgba(255,255,255,.9);
+      border:1px solid rgba(212,175,55,.25);
+      backdrop-filter:blur(10px);
+    }
+    .feature-line-item {}
+    .about-image-frame {
+      width:100%; border-radius:2.5rem;
+      padding:1.5px;
+      background:linear-gradient(135deg,var(--gold-dark),var(--gold),#FAF8F3);
+      box-shadow:0 30px 60px -15px rgba(184,134,11,.2);
+    }
+    .about-image-inner {
+      width:100%; overflow:hidden; border-radius:calc(2.5rem - 1.5px);
+    }
+    .about-image-inner img {
+      width:100%; height:auto; display:block; object-fit:cover;
+      transition:transform 2s ease;
+    }
+    .about-image-inner img:hover { transform:scale(1.04); }
+
 
         /* ================= SLIDER CONTAINER ================= */
         .slider {
@@ -573,9 +611,9 @@
         .slider .list .item .content {
             position: absolute;
             top: 20%;
-            width: 1140px;
+            width: 1130px;
             max-width: 80%;
-            left: 50%;
+            left: 40%;
             transform: translateX(-50%);
             padding-right: 30%;
             box-sizing: border-box;
@@ -734,6 +772,7 @@
             color: #000;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
+ 
 
         /* ================= ANIMATIONS ================= */
         
@@ -909,7 +948,7 @@
     </section>
 
     <!-- 2. ABOUT US -->
-   <!-- ABOUT SECTION (INTEGRATED LUXURY DESIGN) -->
+  
    <section id="about" class="font-sans antialiased text-black min-h-screen relative py-24 px-4 sm:px-8 lg:px-16 overflow-hidden">
         
     <!-- Background Luxury Layer -->
@@ -1047,189 +1086,164 @@
     <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,215,0,0.15), transparent);"></div>
 </section>   
  <!-- CORE SERVICES SECTION (REWRITTEN CAROUSEL) -->
-    
-    <section id="services" class="gallery-section">
-        
-  <!-- SINGLE SLIDER CONTAINER -->
-  <div class="slider">
-    <div class="list">
-        
-        <!-- 1. Corporate Events -->
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1571645163064-77faa9676a46?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Corporate Events">
-            <div class="content">
-                
-                <div class="title">Corporate Events</div>
-                <div class="description">
-                    <ul>
-                    <h2> <li><span>» End-to-End Management</span></li> </h2>
-                    <h2> <li><span>» Seamless Execution</span></li> </h2>
-                    <h2> <li><span>» Customized Solutions</span></li></h2>
-                    </ul>
-                </div>
-                <div class="card-buttons">
-                    <a href="#contact" class="c-btn c-btn-primary">Enquire</a>
-                    <a href="#" class="c-btn c-btn-secondary">Details</a>
-                </div>
-            </div>
-        </div>
+    <!-- SERVICES SLIDER -->
+  <section id="services" style="position:relative;height:100vh;min-height:600px;overflow:hidden;background:#000;">
 
-        <!-- 2. Venue Sourcing -->
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Venue Sourcing">
-            <div class="content">
-                <div class="title">Venue Sourcing</div>
-                <div class="description">
-                    <ul>
-                    <h2> <li><span>» Finding and managing the perfect venue tailored to your needs and scale.</span></li></h2>   
-                    <h2> <li><span>» Contract Negotiation & Logistics</span></li></h2>
-                    </ul>
-                </div>
-                <div class="card-buttons">
-                    <a href="#contact" class="c-btn c-btn-primary">Enquire</a>
-                    <a href="#" class="c-btn c-btn-secondary">Details</a>
-                </div>
-            </div>
+    <!-- Slides data -->
+    <div id="slideList">
+      <!-- 1 -->
+      <div class="slide-item active">
+        <img src="https://images.unsplash.com/photo-1571645163064-77faa9676a46?q=80&w=1400&auto=format&fit=crop" alt="Corporate Events">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-title">Corporate Events</div>
+          <ul class="slide-points">
+            <li>End-to-End Management</li>
+            <li>Seamless Execution</li>
+            <li>Customized Solutions</li>
+          </ul>
+          <div class="slide-btns">
+            <a href="#contact" class="s-btn s-btn-primary">Enquire</a>
+            <a href="#" class="s-btn s-btn-secondary">Details</a>
+          </div>
         </div>
-
-        <!-- 3. BTL Activation -->
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1707358630022-ffebd93380c2?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BTL Activation">
-            <div class="content">
-                <div class="title">BTL Activation</div>
-                <div class="description">
-                    <ul>
-                    <h2> <li><span>» High-impact on-ground activations that drive real consumer engagement.</span></li></h2>
-                    <h2> <li><span>» Brand Awareness Campaigns</span></li></h2>
-                    </ul>
-                </div>
-                <div class="card-buttons">
-                    <a href="#contact" class="c-btn c-btn-primary">Enquire</a>
-                    <a href="#" class="c-btn c-btn-secondary">Details</a>
-                </div>
-            </div>
+      </div>
+      <!-- 2 -->
+      <div class="slide-item">
+        <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=1400&auto=format&fit=crop" alt="Venue Sourcing">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-title">Venue Sourcing</div>
+          <ul class="slide-points">
+            <li>Finding the perfect venue tailored to your needs</li>
+            <li>Contract Negotiation &amp; Logistics</li>
+          </ul>
+          <div class="slide-btns">
+            <a href="#contact" class="s-btn s-btn-primary">Enquire</a>
+            <a href="#" class="s-btn s-btn-secondary">Details</a>
+          </div>
         </div>
-
-        <!-- 4. Stall Fabrication -->
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1752155438634-67402603923b?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Stall Fabrication">
-            <div class="content">
-                <div class="title">Stall Fabrication</div>
-                <div class="description">
-                    <ul>
-                    <h2> <li><span>» Creative and functional stall designs that stand out in any exhibition hall.</span></li></h2>
-                <h2> <li><span>» Modular & Custom Builds</span></li></h2>
-                    </ul>
-                </div>
-                <div class="card-buttons">
-                    <a href="#contact" class="c-btn c-btn-primary">Enquire</a>
-                    <a href="#" class="c-btn c-btn-secondary">Details</a>
-                </div>
-            </div>
+      </div>
+      <!-- 3 -->
+      <div class="slide-item">
+        <img src="https://images.unsplash.com/photo-1707358630022-ffebd93380c2?q=80&w=1400&auto=format&fit=crop" alt="BTL Activation">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-title">BTL Activation</div>
+          <ul class="slide-points">
+            <li>High-impact on-ground activations</li>
+            <li>Brand Awareness Campaigns</li>
+          </ul>
+          <div class="slide-btns">
+            <a href="#contact" class="s-btn s-btn-primary">Enquire</a>
+            <a href="#" class="s-btn s-btn-secondary">Details</a>
+          </div>
         </div>
-
-        <!-- 5. Decor Solutions -->
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1729237261091-bae8eba0c60c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Decor Solutions">
-            <div class="content">
-                <div class="title">Decor Solutions</div>
-                <div class="description">
-                    <ul>
-                      <h2><li><span>» Vibrant décor solutions for festivals and brand experiences.</span></li></h2>
-                      <h2> <li><span>» Theme Design & Lighting</span></li></h2>
-                    </ul>
-                </div>
-                <div class="card-buttons">
-                    <a href="#contact" class="c-btn c-btn-primary">Enquire</a>
-                    <a href="#" class="c-btn c-btn-secondary">Details</a>
-                </div>
-            </div>
+      </div>
+      <!-- 4 -->
+      <div class="slide-item">
+        <img src="https://images.unsplash.com/photo-1752155438634-67402603923b?q=80&w=1400&auto=format&fit=crop" alt="Stall Fabrication">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-title">Stall Fabrication</div>
+          <ul class="slide-points">
+            <li>Creative stall designs for any exhibition hall</li>
+            <li>Modular &amp; Custom Builds</li>
+          </ul>
+          <div class="slide-btns">
+            <a href="#contact" class="s-btn s-btn-primary">Enquire</a>
+            <a href="#" class="s-btn s-btn-secondary">Details</a>
+          </div>
         </div>
-
-        <!-- 6. Engagement Activities -->
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2069&auto=format&fit=crop" alt="Engagement Activities">
-            <div class="content">
-                <div class="title">Engagement </div>
-                <div class="description">
-                    <ul>
-                      <h2><li><span>» Interactive in-store and on-ground engagement concepts that build community.</span></li></h2> 
-                       <h2><li><span>» Gamification & Contests</span></li></h2>
-                    </ul>
-                </div>
-                <div class="card-buttons">
-                    <a href="#contact" class="c-btn c-btn-primary">Enquire</a>
-                    <a href="#" class="c-btn c-btn-secondary">Details</a>
-                </div>
-            </div>
+      </div>
+      <!-- 5 -->
+      <div class="slide-item">
+        <img src="https://images.unsplash.com/photo-1729237261091-bae8eba0c60c?q=80&w=1400&auto=format&fit=crop" alt="Decor Solutions">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-title">Decor Solutions</div>
+          <ul class="slide-points">
+            <li>Vibrant décor for festivals &amp; brand experiences</li>
+            <li>Theme Design &amp; Lighting</li>
+          </ul>
+          <div class="slide-btns">
+            <a href="#contact" class="s-btn s-btn-primary">Enquire</a>
+            <a href="#" class="s-btn s-btn-secondary">Details</a>
+          </div>
         </div>
-
-        <!-- 7. Customised Gifting -->
-        <div class="item">
-            <img src="https://plus.unsplash.com/premium_photo-1673931251157-7050a7e0c272?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Customised Gifting">
-            <div class="content">
-                <div class="title">Customised Gifting</div>
-                <div class="description">
-                    <ul>
-                     <h2><li><span>» Bespoke and thoughtful gifting solutions that reflect your brand identity.</span></li></h2>
-                     <h2> <li><span>» Corporate Gift Hampers</span></li></h2>
-                    </ul>
-                </div>
-                <div class="card-buttons">
-                    <a href="#contact" class="c-btn c-btn-primary">Enquire</a>
-                    <a href="#" class="c-btn c-btn-secondary">Details</a>
-                </div>
-            </div>
+      </div>
+      <!-- 6 -->
+      <div class="slide-item">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1400&auto=format&fit=crop" alt="Engagement">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-title">Engagement Activities</div>
+          <ul class="slide-points">
+            <li>Interactive on-ground engagement concepts</li>
+            <li>Gamification &amp; Contests</li>
+          </ul>
+          <div class="slide-btns">
+            <a href="#contact" class="s-btn s-btn-primary">Enquire</a>
+            <a href="#" class="s-btn s-btn-secondary">Details</a>
+          </div>
         </div>
-
+      </div>
+      <!-- 7 -->
+      <div class="slide-item">
+        <img src="https://plus.unsplash.com/premium_photo-1673931251157-7050a7e0c272?q=80&w=1400&auto=format&fit=crop" alt="Gifting">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-title">Customised Gifting</div>
+          <ul class="slide-points">
+            <li>Bespoke gifting reflecting your brand identity</li>
+            <li>Corporate Gift Hampers</li>
+          </ul>
+          <div class="slide-btns">
+            <a href="#contact" class="s-btn s-btn-primary">Enquire</a>
+            <a href="#" class="s-btn s-btn-secondary">Details</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Thumbnails -->
-    <div class="thumbnail">
-        <!-- Thumbnails -->
-  <div class="srv-thumbs" id="srvThumbs">
-    <div class="srv-thumb active" data-idx="0">
-      <img src="https://images.unsplash.com/photo-1571645163064-77faa9676a46?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-      <div class="srv-thumb-label">Corporate</div>
+    <div class="slide-thumbs" id="slideThumbs">
+      <div class="slide-thumb active" data-index="0">
+        <img src="https://images.unsplash.com/photo-1571645163064-77faa9676a46?q=80&w=200" alt="">
+        <div class="slide-thumb-label">Corporate</div>
+      </div>
+      <div class="slide-thumb" data-index="1">
+        <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=200" alt="">
+        <div class="slide-thumb-label">Venue</div>
+      </div>
+      <div class="slide-thumb" data-index="2">
+        <img src="https://images.unsplash.com/photo-1707358630022-ffebd93380c2?q=80&w=200" alt="">
+        <div class="slide-thumb-label">BTL</div>
+      </div>
+      <div class="slide-thumb" data-index="3">
+        <img src="https://images.unsplash.com/photo-1752155438634-67402603923b?q=80&w=200" alt="">
+        <div class="slide-thumb-label">Stall</div>
+      </div>
+      <div class="slide-thumb" data-index="4">
+        <img src="https://images.unsplash.com/photo-1729237261091-bae8eba0c60c?q=80&w=200" alt="">
+        <div class="slide-thumb-label">Decor</div>
+      </div>
+      <div class="slide-thumb" data-index="5">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=200" alt="">
+        <div class="slide-thumb-label">Engage</div>
+      </div>
+      <div class="slide-thumb" data-index="6">
+        <img src="https://plus.unsplash.com/premium_photo-1673931251157-7050a7e0c272?q=80&w=200" alt="">
+        <div class="slide-thumb-label">Gifting</div>
+      </div>
     </div>
-    <div class="srv-thumb" data-idx="1">
-      <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-      <div class="srv-thumb-label">Venue</div>
-    </div>
-    <div class="srv-thumb" data-idx="2">
-      <img src="https://images.unsplash.com/photo-1752155438634-67402603923b?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-      <div class="srv-thumb-label">BTL</div>
-    </div>
-    <div class="srv-thumb" data-idx="3">
-      <img src="https://images.unsplash.com/photo-1752155438634-67402603923b?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-      <div class="srv-thumb-label">Stall</div>
-    </div>
-    <div class="srv-thumb" data-idx="4">
-      <img src="https://images.unsplash.com/photo-1729237261091-bae8eba0c60c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-      <div class="srv-thumb-label">Decor</div>
-    </div>
-    <div class="srv-thumb" data-idx="5">
-      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=300&auto=format&fit=crop" alt="">
-      <div class="srv-thumb-label">Engage</div>
-    </div>
-    <div class="srv-thumb" data-idx="6">
-      <img src="https://plus.unsplash.com/premium_photo-1673931251157-7050a7e0c272?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-      <div class="srv-thumb-label">Gifting</div>
-    </div>
-  </div>
-        
 
     <!-- Arrows -->
-  <div class="srv-arrows">
-    <button class="srv-arrow" id="srvPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-    <button class="srv-arrow" id="srvNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-  </div>
-
-  <!-- Progress -->
-  <div class="srv-progress" id="srvProgress"></div>
-</div>
-
-</section>
+    <div class="slide-arrows">
+      <button class="slide-arrow" id="slidePrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <button class="slide-arrow" id="slideNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
 
     <!-- 4. FEATURED EXPERIENCES / PORTFOLIO -->
 
@@ -1540,166 +1554,86 @@
         revealElements.forEach(el => revealObserver.observe(el));
 
         // --- 5. Mobile Menu ---
-        const mMenu = document.getElementById('mobile-menu');
-        const mClose = document.getElementById('mobile-close');
-        const mLinks = document.querySelectorAll('.m-link');
-
-        mToggle.addEventListener('click', () => mMenu.classList.remove('translate-x-full'));
-        mClose.addEventListener('click', () => mMenu.classList.add('translate-x-full'));
-        mLinks.forEach(l => l.addEventListener('click', () => mMenu.classList.add('translate-x-full')));
+        
+    const mMenu = document.getElementById('mobile-menu');
+    document.getElementById('mobile-toggle').addEventListener('click', () => mMenu.classList.remove('translate-x-full'));
+    document.getElementById('mobile-close').addEventListener('click', () => mMenu.classList.add('translate-x-full'));
+    document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', () => mMenu.classList.add('translate-x-full')));
 
         // --- 6. Form UX ---
-        document.getElementById('quote-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('button');
-            const originalContent = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-circle-notch animate-spin"></i> Processing...';
-            btn.disabled = true;
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> REQUEST SENT';
-                btn.style.background = '#22c55e';
-                btn.style.color = '#fff';
-                this.reset();
-                setTimeout(() => {
-                    btn.innerHTML = originalContent;
-                    btn.disabled = false;
-                    btn.style.background = 'linear-gradient(to right, #facc15, #ca8a04)';
-                    btn.style.color = '#000';
-                }, 3000);
-            }, 1500);
-        });
+       // ── CONTACT FORM ──
+    document.getElementById('quote-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type=submit]');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> REQUEST SENT';
+        btn.style.background = '#22c55e';
+        btn.style.color = '#fff';
+        this.reset();
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.disabled = false;
+          btn.style.background = 'linear-gradient(135deg,#FFD700,#F5B800)';
+          btn.style.color = '#000';
+        }, 3000);
+      }, 1500);
+    });
+
 
         // --- 7. CORE SERVICES CAROUSEL (REWRITTEN LOGIC) ---
-        let nextBtn = document.querySelector('.next');
-        let prevBtn = document.querySelector('.prev');
-        let slider = document.querySelector('.slider');
-        let sliderList = slider.querySelector('.slider .list');
-        let thumbnail = document.querySelector('.slider .thumbnail');
-        
-        let isAnimating = false;
+        (function() {
+      const slides = document.querySelectorAll('.slide-item');
+      const thumbs = document.querySelectorAll('.slide-thumb');
+      let current = 0;
+      let busy = false;
+      const AUTO_INTERVAL = 5000;
 
-        // Sync visual thumbnail track stack safely instantly on start
-        let initialThumbnails = thumbnail.querySelectorAll('.item');
-        if(initialThumbnails.length > 0) {
-            thumbnail.appendChild(initialThumbnails[0]);
-        }
+      function goTo(idx) {
+        if (busy || idx === current) return;
+        busy = true;
+        slides[current].classList.remove('active');
+        thumbs[current].classList.remove('active');
+        current = (idx + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        thumbs[current].classList.add('active');
+        // Scroll thumb into view
+        thumbs[current].scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+        setTimeout(() => { busy = false; }, 900);
+      }
 
-        nextBtn.onclick = function() {
-            if (isAnimating) return;
-            moveSlider('next');
-        }
+      document.getElementById('slideNext').addEventListener('click', () => goTo(current + 1));
+      document.getElementById('slidePrev').addEventListener('click', () => goTo(current - 1));
+      thumbs.forEach(t => t.addEventListener('click', () => goTo(parseInt(t.dataset.index))));
 
-        prevBtn.onclick = function() {
-            if (isAnimating) return;
-            moveSlider('prev');
-        }
+      // Auto-advance
+      let timer = setInterval(() => goTo(current + 1), AUTO_INTERVAL);
+      document.getElementById('services').addEventListener('mouseenter', () => clearInterval(timer));
+      document.getElementById('services').addEventListener('mouseleave', () => {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), AUTO_INTERVAL);
+      });
+    })();
 
-        function moveSlider(direction) {
-            isAnimating = true; // Block clicks during animation
-            
-            let sliderItems = sliderList.querySelectorAll('.item');
-            let thumbnailItems = thumbnail.querySelectorAll('.item');
-            
-            if(direction === 'next'){
-                sliderList.appendChild(sliderItems[0]);
-                thumbnail.appendChild(thumbnailItems[0]);
-                slider.classList.add('next');
-            } else {
-                sliderList.prepend(sliderItems[sliderItems.length - 1]);
-                thumbnail.prepend(thumbnailItems[thumbnailItems.length - 1]);
-                slider.classList.add('prev');
-            }
-
-            // Cleanup after animation
-            slider.addEventListener('animationend', function() {
-                slider.classList.remove('next');
-                slider.classList.remove('prev');
-                isAnimating = false;
-            }, {once: true});
-        }
-        
-
-        // --- 3D MOUSE PARALLAX EFFECT ---
-        document.addEventListener('mousemove', (e) => {
-            const activeItem = document.querySelector('.slider .list .item:nth-child(1)');
-            if (!activeItem) return;
-
-            const img = activeItem.querySelector('img');
-            const content = activeItem.querySelector('.content');
-
-            const x = (e.clientX / window.innerWidth - 0.5) * 2;
-            const y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-            if (img) {
-                gsap.to(img, {
-                    x: -x * 10, y: -y * 10,
-                    rotationY: x * 5, rotationX: -y * 5,
-                    duration: 0.5, ease: 'power2.out'
-                });
-            }
-
-            if (content) {
-                gsap.to(content, {
-                    x: -x * 20, y: -y * 20,
-                    rotationY: x * 2, rotationX: -y * 2,
-                    duration: 0.5, ease: 'power2.out'
-                });
-            }
-        });
-        
+         
         <!-- ================= GSAP ENGINE CONFIGURATION INTEGRATION ================= -->
- 
-        document.addEventListener("DOMContentLoaded", function () {
-            // Register ScrollTrigger Extension explicitly
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Left Side Components (Image Framework) Sliding Layout Assembly
-            gsap.from("#left-container", {
-                x: -70,
-                opacity: 0,
-                duration: 1.3,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: "main",
-                    start: "top 85%"
-                }
-            });
-
-            // Right Side Sequence Presentation Orchestration Timeline
-            const layoutTimeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "main",
-                    start: "top 80%"
-                }
-            });
-
-            // Smooth Drop-in for Structural Content Text Layers
-            layoutTimeline.from("#right-container > *:not(.space-y-6)", {
-                y: 35,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.15,
-                ease: "power3.out"
-            })
-            // Smooth staggered slide-out reveal for target roadmap feature elements
-            .from(".feature-line-item", {
-                x: 35,
-                opacity: 0,
-                duration: 0.75,
-                stagger: 0.12,
-                ease: "power2.out"
-            }, "-=0.45");
-
-            // Endless Ambient Float Micro-Interaction for the Glassmorphism Assurance Card Overlay
-            gsap.to("#floating-assurance", {
-                y: -10,
-                duration: 3,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-        });
-     
+        document.addEventListener('DOMContentLoaded', () => {
+      if (typeof gsap === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('#about .about-image-frame', {
+        x: -60, opacity: 0, duration: 1.2, ease: 'power4.out',
+        scrollTrigger: { trigger: '#about', start: 'top 80%' }
+      });
+      gsap.from('#about .glass-assurance-card', {
+        scale: .8, opacity: 0, delay: .5, duration: 1, ease: 'back.out(1.4)',
+        scrollTrigger: { trigger: '#about', start: 'top 80%' }
+      });
+      gsap.to('#about .glass-assurance-card', {
+        y: -10, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1
+      });
+    });
 
     </script>
 </body>
