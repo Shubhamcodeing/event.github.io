@@ -956,6 +956,85 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
   .form-card{padding:26px 20px;border-radius:20px}
   .port-card{border-radius:16px}
 }
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-h1{letter-spacing:-0.5px}
+  .hero-btns{gap:12px}
+  .btn-primary,.btn-outline{padding:15px 26px;font-size:10px}
+  .about-img-frame img{height:320px}
+  .portfolio-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .srv-thumbs{max-width:calc(100vw - 80px)}
+  .srv-arrows{right:50%;transform:translateX(50%)}
+  .srv-content-inner{padding-bottom:210px}
+
+  /* --- FIXES BELOW --- */
+
+  /* Hero testimonial card was overflowing off-screen / overlapping image */
+  .hero-card-wrap{padding:1rem}
+  .hero-testimonial{
+    position:static;          /* stop absolute overflow on mobile */
+    max-width:100%;
+    margin-top:1rem;
+  }
+  .about-img-wrap{padding-bottom:0}
+
+  /* About badge (12+ Years) was clipping outside the image frame */
+  .about-badge{
+    right:8px;
+    bottom:-20px;
+    padding:14px 20px;
+  }
+  .about-badge-num{font-size:30px}
+
+  /* Core section text was rendering too small on phones — bump base sizes */
+  :root{
+    --fs-body: 15px;
+    --fs-body-sm: 13.5px;
+    --fs-label: 11px;
+  }
+  .feat-item p, .port-meta, .c-item strong, .footer-col p, .footer-col a{
+    font-size:14px;
+  }
+  .script-quote{font-size:22px}
+
+  /* Services slider text readability on small screens */
+  .srv-points li{font-size:14px}
+  .srv-title{font-size:clamp(28px,7vw,40px)}
+
+  /* Contact card padding so form doesn't touch edges */
+  .contact-card{padding:24px 18px}
+}
+
+@media(max-width:480px){
+  .hero-content{padding:80px 20px 44px}
+  .about-inner,.nav-inner{padding:0 20px}
+  .contact-inner,.footer-inner,.portfolio-grid{padding-left:20px;padding-right:20px}
+  .contact-card{padding:30px 22px;border-radius:26px}
+  .form-card{padding:26px 20px;border-radius:20px}
+  .port-card{border-radius:16px}
+
+  /* --- FIXES BELOW --- */
+
+  /* Logo text wrapping/illegibly small on narrow phones */
+  .logo-text{font-size:13px;line-height:1.15}
+  .logo-text span{font-size:8px}
+  .logo-img{height:42px}
+
+  /* Stats bar numbers were cramped 2-up on very small screens */
+  .stats-bar{padding:2.2rem 1.2rem;gap:1.8rem 1.2rem}
+  .stat-num{font-size:1.9rem}
+
+  /* Hero years badge overlapping image edge */
+  .hero-years-badge{top:0.4rem;right:0.6rem;font-size:0.62rem;padding:0.35rem 0.65rem}
+
+  /* Service thumbnails too tiny to tap accurately */
+  .srv-thumb{width:64px;height:88px}
+}
 </style>
 </head>
 <body>
@@ -1202,7 +1281,7 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
       <div class="srv-content"><div class="srv-content-inner">
        
         <div class="srv-title">Corporate Events</div>
-        <ul class="srv-points"><li>✓ End-to-End Management</li><li>✓ Seamless Execution</li><li>✓ Customized Solutions</li></ul>
+        <ul class="srv-points"><li>End-to-End Management</li><li>Seamless Execution</li><li>Customized Solutions</li></ul>
         <div class="srv-btns"><a href="#contact" class="s-btn s-btn-primary">Enquire</a><a href="#portfolio" class="s-btn s-btn-secondary">View Work</a></div>
       </div></div>
     </div>
@@ -1211,7 +1290,7 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
       <div class="srv-overlay"></div>
       <div class="srv-content"><div class="srv-content-inner">
         <div class="srv-title">Venue Sourcing</div>
-        <ul class="srv-points"><li>✓ Transparent Pricing, 0% commission.</li><li>✓ Verified Venue Partners</li><li>✓ Exclusive Venue Network</li></ul>
+        <ul class="srv-points"><li>Transparent Pricing, 0% commission.</li><li> Verified Venue Partners</li><li>Exclusive Venue Network</li></ul>
         <div class="srv-btns"><a href="#contact" class="s-btn s-btn-primary">Enquire</a><a href="#portfolio" class="s-btn s-btn-secondary">View Work</a></div>
       </div></div>
     </div>
@@ -1220,7 +1299,7 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
       <div class="srv-overlay"></div>
       <div class="srv-content"><div class="srv-content-inner">
         <div class="srv-title">BTL Activation</div>
-        <ul class="srv-points"><li>✓ Pan-India Activation Network</li><li>✓ On-Ground Execution Experts</li><li>✓ Customized Engagement Ideas</li></ul>
+        <ul class="srv-points"><li>Pan-India Activation Network</li><li>On-Ground Execution Experts</li><li>Customized Engagement Ideas</li></ul>
         <div class="srv-btns"><a href="#contact" class="s-btn s-btn-primary">Enquire</a><a href="#portfolio" class="s-btn s-btn-secondary">View Work</a></div>
       </div></div>
     </div>
@@ -1229,7 +1308,7 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
       <div class="srv-overlay"></div>
       <div class="srv-content"><div class="srv-content-inner">
         <div class="srv-title">Stall Fabrication</div>
-        <ul class="srv-points"><li>✓ Creative Stall Design Concepts</li><li> ✓ Seamless Fabrication & Execution</li><li>✓ Engaging & Brand-Focused Displays</li></ul>
+        <ul class="srv-points"><li>Creative Stall Design Concepts</li><li> Seamless Fabrication & Execution</li><li> Engaging & Brand-Focused Displays</li></ul>
         <div class="srv-btns"><a href="#contact" class="s-btn s-btn-primary">Enquire</a><a href="#portfolio" class="s-btn s-btn-secondary">View Work</a></div>
       </div></div>
     </div>
@@ -1238,7 +1317,7 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
       <div class="srv-overlay"></div>
       <div class="srv-content"><div class="srv-content-inner">
         <div class="srv-title">Decor Solutions</div>
-        <ul class="srv-points"><li> ✓ Theme-Based Decor Solutions</li><li>✓ Every Detail Crafted to Perfection</li><li>✓ Customized Concepts, Perfect Execution</li></ul>
+        <ul class="srv-points"><li> Theme-Based Decor Solutions</li><li> Every Detail Crafted to Perfection</li><li> Customized Concepts, Perfect Execution</li></ul>
         <div class="srv-btns"><a href="#contact" class="s-btn s-btn-primary">Enquire</a><a href="#portfolio" class="s-btn s-btn-secondary">View Work</a></div>
       </div></div>
     </div>
@@ -1247,7 +1326,7 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
       <div class="srv-overlay"></div>
       <div class="srv-content"><div class="srv-content-inner">
         <div class="srv-title">Engagement Activities</div>
-        <ul class="srv-points"><li>✓ Creative Activities for Engagement</li><li>✓ Instant camera booth, caricature, AI booth & more.</li><li>✓ Fun Fridays, Team Bonding & Interactive Setups</li></ul>
+        <ul class="srv-points"><li>Creative Activities for Engagement</li><li> Instant camera booth, caricature, AI booth & more.</li><li>Fun Fridays, Team Bonding & Interactive Setups</li></ul>
         <div class="srv-btns"><a href="#contact" class="s-btn s-btn-primary">Enquire</a><a href="#portfolio" class="s-btn s-btn-secondary">View Work</a></div>
       </div></div>
     </div>
@@ -1256,8 +1335,8 @@ footer{background:var(--off);padding:88px 0 32px;border-top:1px solid rgba(212,1
       <div class="srv-overlay"></div>
       <div class="srv-content"><div class="srv-content-inner">
         <div class="srv-title">Customised Gifting</div>
-        <ul class="srv-points"><li>✓ Customized Corporate Gifting Solutions
-        </li><li>✓ Thoughtful Gifts for Every Occasion</li><li>✓ Quality Gifting with Timely Delivery</li></ul>
+        <ul class="srv-points"><li> Customized Corporate Gifting Solutions
+        </li><li> Thoughtful Gifts for Every Occasion</li><li> Quality Gifting with Timely Delivery</li></ul>
         <div class="srv-btns"><a href="#contact" class="s-btn s-btn-primary">Enquire</a><a href="#portfolio" class="s-btn s-btn-secondary">View Work</a></div>
       </div></div>
     </div>
